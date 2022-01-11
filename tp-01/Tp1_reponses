@@ -1,0 +1,66 @@
+# TP1 - Introduction au C++ (Réponses)
+
+## Exercice 1 - Compilation et exécution
+
+
+1)Quels sont les avantages et désavantages d'un langage dit "compilé" (C, C++, Pascal) ou "semi-compilé" (Java) comparé à un langage dit "interpreté" (Python, PHP, Javascript, etc) ?
+
+
+COMPILÉ :	
+	- ils faut compiler pour chaque platforme
+	- faut recompiler si les dépendances changes
+	+ plus efficace (traduit en ligne machine)
+	+- gestion de la memoire
+
+2) Quelle est la différence entre une erreur de compilation et une erreur d'exécution ? (à quel moment se produisent-elles ? dans quelles circonstances ? comment les identifier ? comment les corriger ? ...)
+
+erreur de compilation : 
+programe invalide, synthaxe. (Il va faire des sugestions) peut être verbeuse mais nous permet de corriger le programme.
+
+erreur d'exécution : 
+probleme de memoire ou /0 instruction fausse. très difficile a debugger
+
+3) Que signifie en pratique l'expression "undefined behavior" (UB) ? Peut-on compiler un programme contenant du code classifié UB par le standard ? Si oui, que peut-il se produire au moment de son exécution ?
+
+Qu'on ne sais pas comment l'expression va se comporter. Oui. Une erreur d'exécution.
+Par exemple : short x = 0x10000; 
+-> x == ? 
+C'est quand on essaye de stocker dans un short un long.
+
+
+## Exercice 2 - Primitives et initialisation
+
+1) 
+sans -Werror:
+
+	-const short s1; -> s1 initialisé avec valeur indefinit et undiagable
+
+	- bool b3 {2}; -> conversion int -> bool WARNING car int 32bits et bool 1bit
+	
+	- double& d12; -> reference qui pointe nul part
+
+	-char c8 {0x812079A} 64bits -> char 8bits
+
+	- int& i15 = i1; -> reference non-const vers quelquechose const
+
+
+2) Pouvez-vous donner la valeur de s0 ? De ul7 ?
+
+- s0 = indefinit
+- ul7 {b3 + u5 + us6} => us6 est unsigned et -10 on sais pas si on va faire le tour.
+Donc ul7 indefinit
+
+
+## Exercice 3 
+
+2) En C++, vous pouvez passer vos paramètres par valeur, par référence et par référence constante. Quelles sont les différences entre ces différentes méthodes de passage ? Dans quels contextes est-il préférable de passer par valeur ? Par référence ? Et par référence constante ?
+
+Par valeur => l'objet est copier, intention de modifier les param
+
+Par réference => l'objet n'est pas copier, mais on peux modifier l'objet grace a son adresse. modifie les value a la reference.
+
+Par référence constante => L'objet n'est pas copier, ni modifiable. on a pas l'intention de modifier les parametre
+
+
+## Exercice 4 - std::string et std::vector
+
